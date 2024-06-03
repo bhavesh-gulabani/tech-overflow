@@ -5,10 +5,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getTimestamp } from '@/lib/utils';
 import ParseHTML from './ParseHTML';
+import Votes from './Votes';
 
 interface Props {
   questionId: string;
-  authorId: string;
+  userId: string;
   totalAnswers: number;
   page?: number;
   filter?: number;
@@ -16,7 +17,6 @@ interface Props {
 
 const AllAnswers = async ({ questionId, userId, totalAnswers }: Props) => {
   const result = await getAnswers({ questionId: JSON.parse(questionId) });
-  console.log(userId);
 
   return (
     <div className='mt-11'>
@@ -29,7 +29,7 @@ const AllAnswers = async ({ questionId, userId, totalAnswers }: Props) => {
         {result.answers.map((answer) => (
           <article key={answer._id} className='light-border border-b py-10'>
             <div className='flex items-center justify-between'>
-              <div className='mb-8 flex flex-col-reverse justify-between gap-5 sm:flex-row sm:items-center sm:gap-2'>
+              <div className='mb-8 flex w-full flex-col-reverse justify-between gap-5 sm:flex-row sm:items-center sm:gap-2'>
                 <Link
                   href={`/profile/${answer.author.clerkId}`}
                   className='flex flex-1 items-start gap-1 sm:items-center'
@@ -50,7 +50,17 @@ const AllAnswers = async ({ questionId, userId, totalAnswers }: Props) => {
                     </p>
                   </div>
                 </Link>
-                <div className='flex justify-end'>VOTING</div>
+                <div className='flex justify-end'>
+                  <Votes
+                    type='Answer'
+                    itemId={JSON.stringify(answer._id)}
+                    userId={JSON.stringify(userId)}
+                    upvotes={answer.upvotes.length}
+                    hasupVoted={answer.upvotes.includes(userId)}
+                    downvotes={answer.downvotes.length}
+                    hasdownVoted={answer.downvotes.includes(userId)}
+                  />
+                </div>
               </div>
             </div>
             <ParseHTML data={answer.content} />
