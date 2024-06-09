@@ -10,6 +10,11 @@ import QuestionCard from '@/components/cards/QuestionCard';
 import { getQuestions } from '@/lib/actions/question.action';
 import { SearchParamsProps } from '@/types';
 import Pagination from '@/components/shared/Pagination';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Home | TechOverflow',
+};
 
 const Home = async ({ searchParams }: SearchParamsProps) => {
   const result = await getQuestions({
