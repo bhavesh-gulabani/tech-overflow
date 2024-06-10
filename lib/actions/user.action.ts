@@ -86,8 +86,6 @@ export async function deleteUser(params: DeleteUserParams) {
     // Delete user questions
     await Question.deleteMany({ author: user._id });
 
-    // @TODO: Delete user answers, comments, etc.
-
     const deletedUser = await User.findByIdAndDelete(user._id);
 
     return deletedUser;
@@ -398,14 +396,3 @@ export async function getUserAnswers(params: GetUserStatsParams) {
     throw error;
   }
 }
-
-// @TODO: Cleanup
-// export async function getAllUsers(params: GetAllUsersParams) {
-//   try {
-//     connectToDatabase();
-
-//   } catch (error) {
-//     console.log(error);
-//     throw error;
-//   }
-// }
