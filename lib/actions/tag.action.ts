@@ -10,6 +10,7 @@ import {
 import Tag, { ITag } from '@/database/tag.model';
 import Question from '@/database/question.model';
 import { FilterQuery } from 'mongoose';
+import Interaction from '@/database/interaction.model';
 
 export async function getTopInteractedTags(params: GetTopInteractedTagsParams) {
   try {
@@ -26,11 +27,18 @@ export async function getTopInteractedTags(params: GetTopInteractedTagsParams) {
     // @TODO: Find interactions for the user and group by tags...
     // Entity --> Interaction
 
-    return [
-      { _id: '1', name: 'tag1' },
-      { _id: '2', name: 'tag2' },
-      { _id: '3', name: 'tag3' },
-    ];
+    // Find the user's interactions where actions equal "ask_question" or "answer" and return tags name without duplicates
+    const userInteractions = await Interaction.find({
+      user: user._id,
+      action: { $in: ['ask_question', 'answer'] },
+    }).distinct('tags');
+
+    // Extract tags from user's interactions limited to 3 tags
+    const tags = await Tag.find({ _id: { $in: userInteractions } })
+      .limit(3)
+      .select('_id name');
+
+    return tags;
   } catch (error) {
     console.log(error);
     throw error;
