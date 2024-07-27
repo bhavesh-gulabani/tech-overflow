@@ -147,6 +147,18 @@ code {
   background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%) !important;
 }
 
+.cl-formButtonPrimary.cl-button.cl-internal-ttumny {
+  background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%) !important;
+  box-shadow: none !important;
+}
+
+.cl-footerActionLink {
+  background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
 .hash-span {
   margin-top: -140px;
   padding-bottom: 140px;
