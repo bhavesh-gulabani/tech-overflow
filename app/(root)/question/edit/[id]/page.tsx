@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 const Page = async ({ params }: ParamsProps) => {
-  const { userId } = auth();
+  const { userId } = await auth();
 
   if (!userId) return null;
 

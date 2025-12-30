@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 const Page = async ({ params, searchParams }: any) => {
-  const { userId: clerkId } = auth();
+  const { userId: clerkId } = await auth();
 
   let mongoUser;
 

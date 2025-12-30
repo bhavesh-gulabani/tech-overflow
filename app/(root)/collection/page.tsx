@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 const Collection = async ({ searchParams }: SearchParamsProps) => {
-  const { userId } = auth();
+  const { userId } = await auth();
 
   if (!userId) {
     return null;

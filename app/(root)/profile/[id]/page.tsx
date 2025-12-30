@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 };
 
 const Page = async ({ params, searchParams }: URLProps) => {
-  const { userId: clerkId } = auth();
+  const { userId: clerkId } = await auth();
   const userInfo = await getUserInfo({
     userId: params.id,
   });
