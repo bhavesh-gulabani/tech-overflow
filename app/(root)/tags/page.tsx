@@ -13,6 +13,8 @@ export const metadata: Metadata = {
   title: 'Tags | TechOverflow',
 };
 
+export const dynamic = 'force-dynamic';
+
 const Page = async ({ searchParams }: SearchParamsProps) => {
   const result = await getAllTags({
     searchQuery: searchParams.q,

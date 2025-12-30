@@ -18,6 +18,8 @@ export const metadata: Metadata = {
   title: 'Profile | TechOverflow',
 };
 
+export const dynamic = 'force-dynamic';
+
 const Page = async ({ params, searchParams }: URLProps) => {
   const { userId: clerkId } = await auth();
   const userInfo = await getUserInfo({

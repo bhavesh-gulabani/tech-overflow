@@ -5,6 +5,8 @@ export const metadata: Metadata = {
   title: 'Find jobs | TechOverflow',
 };
 
+export const dynamic = 'force-dynamic';
+
 const Page = () => {
   return (
     <section>

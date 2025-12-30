@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   title: 'Ask a question | TechOverflow',
 };
 
+export const dynamic = 'force-dynamic';
+
 const Page = async () => {
   const { userId } = await auth();
 

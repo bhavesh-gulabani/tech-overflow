@@ -13,6 +13,8 @@ export const metadata: Metadata = {
   title: 'Community | TechOverflow',
 };
 
+export const dynamic = 'force-dynamic';
+
 const Page = async ({ searchParams }: SearchParamsProps) => {
   const result = await getAllUsers({
     searchQuery: searchParams.q,

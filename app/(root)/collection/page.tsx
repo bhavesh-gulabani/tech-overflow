@@ -13,6 +13,8 @@ export const metadata: Metadata = {
   title: 'Collections | TechOverflow',
 };
 
+export const dynamic = 'force-dynamic';
+
 const Collection = async ({ searchParams }: SearchParamsProps) => {
   const { userId } = await auth();
 

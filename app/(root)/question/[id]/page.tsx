@@ -16,6 +16,8 @@ export const metadata: Metadata = {
   title: 'Question Details | TechOverflow',
 };
 
+export const dynamic = 'force-dynamic';
+
 const Page = async ({ params, searchParams }: any) => {
   const { userId: clerkId } = await auth();
 

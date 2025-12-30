@@ -10,6 +10,8 @@ export const metadata: Metadata = {
   title: 'Tag questions | TechOverflow',
 };
 
+export const dynamic = 'force-dynamic';
+
 const Page = async ({ params, searchParams }: URLProps) => {
   const result = await getQuestionsByTagId({
     tagId: params.id,

@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   title: 'Edit question | TechOverflow',
 };
 
+export const dynamic = 'force-dynamic';
+
 const Page = async ({ params }: ParamsProps) => {
   const { userId } = await auth();
 
